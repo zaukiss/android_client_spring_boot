@@ -88,10 +88,7 @@ public class ButtonListener implements View.OnClickListener {
 
             case R.id.contact:
 
-                /*Intent intent2 =  new Intent(v.getContext(),AddContactActivity.class);
-                intent2.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-                v.getContext().startActivity(intent2);*/
-
+                //Do this in order to force refresh when contact will be add
                 Intent intent2 = new Intent(v.getContext(), AddContactActivity.class);
                 intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -69,6 +69,7 @@ public class AddContactActivity extends AppCompatActivity {
 
     public void launchAdd(View v){
 
+        //force refresh
         new addContacts().execute(contactsToAdd);
         Intent intent2 = new Intent(v.getContext(), HomeActivity.class);
         intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -80,6 +81,7 @@ public class AddContactActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
+        //force refresh
         Intent intent2 = new Intent(this, HomeActivity.class);
         intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
