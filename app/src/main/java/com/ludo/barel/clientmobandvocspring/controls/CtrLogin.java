@@ -3,6 +3,7 @@ package com.ludo.barel.clientmobandvocspring.controls;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -38,10 +39,18 @@ public class CtrLogin {
 
     public void connectUser(String login, String password, View view,boolean subscribeBefor){
 
-        //This method allow to manage subscribe or connection of a user.
-        //According the case some process is executed. After a user
-        //was subscribe a connection request is necessary this why
-        //i've chosen to put both in the same method.
+        // This method allow to manage subscribe or connection of a user.
+        // According the case one process is executed. After a user
+        // was subscribed a connection request is necessary this why
+        // i've chosen to put both in the same method.
+
+        // For subscribtion even if user has put a pseudo different from his email
+        // the email's value will be taken as nickname
+
+        // Reason:
+        // in server side, for the moment, I do not work with nickname I guess the nickname's value
+        // is equal to mail's value. In this way, the user is unique ( no duplicate user ).
+        // This ensures the integrity of the database.
 
         if(subscribeBefor){//case user subscription
 
@@ -95,7 +104,33 @@ public class CtrLogin {
                         }
 
                         JSONObject jsonObject = new JSONObject(result);
-                        if (jsonObject != null && jsonObject.getInt("_status") == Constants.SUBSCRIBE_SUCCESS) {
+                        if (jsonObject.getInt("_status") != 0 && jsonObject.getInt("_status") == Constants.SUBSCRIBE_SUCCESS) {
+
+                            //HERE : create users for the add contacts test process.
+
+                            //" while loop " it's here just for test purpose
+                            //don't forget to remove it later
+                            //normally no trouble must appear
+                            //if contact exist it will not duplicate to database
+                            //and errors will not treated
+                            //in server side an exception will be raised
+                            //but server always will run without any troubles
+
+                            //BEGIN : JUST FOR TEST ( TO REMOVE )
+                            String[] userBidon = new String[3];
+                            int i = 2;
+                            while (i < 10){//first subscribe 7 bidon users
+
+                                userBidon[0] = "test"+i+"@test.com";//bidon's pseudo
+                                userBidon[1] = "test";//bidon's password
+                                userBidon[2] = "test"+i+"@test.com";//bidon's mail
+                                String r = new HttpConnectionAsyncTask().execute(userBidon).get();//process subscribe
+                                if(!r.isEmpty()){//wait for response
+
+                                    i++;
+                                }
+                            }
+                            //END : JUST FOR TEST ( TO REMOVE )
 
                             //start the new Activity
                             Toast.makeText(view.getContext(), "Connexion réussie", Toast.LENGTH_LONG).show();
@@ -104,9 +139,13 @@ public class CtrLogin {
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             intent.addCategory(Intent.CATEGORY_HOME);
                             view.getContext().startActivity(intent);
-                        }else if (jsonObject != null && jsonObject.getInt("_status") == Constants.USER_ALREADY_EXIST) {
+                        }else if (jsonObject.getInt("_status") != 0 && jsonObject.getInt("_status") == Constants.USER_ALREADY_EXIST) {
 
                             Toast.makeText(view.getContext(), "l'utilisateur existe déjà ( changer votre email et pseudo )", Toast.LENGTH_LONG).show();
+                            return;
+                        }else{
+
+                            Toast.makeText(view.getContext(), "Erreur serveur ", Toast.LENGTH_LONG).show();
                             return;
                         }
                     } catch (Exception e) {
@@ -124,10 +163,6 @@ public class CtrLogin {
 
             if (!login.matches(Constants.REGEX_MAIL)) {//force user to give his mail as login for connection
 
-                //Reason :
-                //in serveur side, for now, i don't work with pseudo i'm suppose pseudo value
-                //is equal to mail value. this way, user are unique ( no duplicate user ).
-                //This allow to ensure the integrity of database.
                 Toast.makeText(view.getContext(), "la syntax de votre email est invalide", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -156,9 +191,9 @@ public class CtrLogin {
                     Toast.makeText(view.getContext(), "Erreur interne", Toast.LENGTH_LONG).show();
                     return;
                 }
-                
+
                 JSONObject jsonObject = new JSONObject(result);
-                if (jsonObject != null && jsonObject.getInt("_status") == Constants.CONNEXION_SUCCESS) {
+                if (jsonObject.getInt("_status") != 0 && jsonObject.getInt("_status") == Constants.CONNEXION_SUCCESS) {
 
 
                     //start the new Activity
@@ -168,11 +203,11 @@ public class CtrLogin {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addCategory(Intent.CATEGORY_HOME);
                     view.getContext().startActivity(intent);
-                } else if (jsonObject != null && jsonObject.getInt("_status") == Constants.USER_NOT_FOUND) {
+                } else if (jsonObject.getInt("_status") != 0 && jsonObject.getInt("_status") == Constants.USER_NOT_FOUND) {
 
                     Toast.makeText(view.getContext(), "Utilisateur inconnue ", Toast.LENGTH_LONG).show();
                     edTLogin.setBackgroundColor(Color.RED);
-                } else if (jsonObject != null && jsonObject.getInt("_status") == Constants.USER_BAD_PASSWORD) {
+                } else if (jsonObject.getInt("_status") != 0 && jsonObject.getInt("_status") == Constants.USER_BAD_PASSWORD) {
 
                     Toast.makeText(view.getContext(), "Mauvais mot de passe", Toast.LENGTH_LONG).show();
                     edTpassword.setBackgroundColor(Color.RED);

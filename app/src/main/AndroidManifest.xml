@@ -12,37 +12,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/logBut_txt"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.SettingsActivity"
-            android:label="@string/settingsLabel">
-        </activity>
+            android:label="@string/settingsLabel"></activity>
         <activity
             android:name=".activities.SubscribeActivity"
-            android:label="@string/subsBut_txt">
-
-
-        </activity>
-
-        <activity android:name=".activities.HomeActivity"
+            android:label="@string/subsBut_txt"></activity>
+        <activity
+            android:name=".activities.HomeActivity"
             android:label="@string/homeLabel"
             android:launchMode="singleTop">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.HOME"/>
-            </intent-filter>
 
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.AddContactActivity"
+            android:label="Ajouter contatct"
+            android:launchMode="singleTop">
         </activity>
     </application>
 

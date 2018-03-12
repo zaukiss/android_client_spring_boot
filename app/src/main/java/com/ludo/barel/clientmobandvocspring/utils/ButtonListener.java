@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ludo.barel.clientmobandvocspring.R;
+import com.ludo.barel.clientmobandvocspring.activities.AddContactActivity;
+import com.ludo.barel.clientmobandvocspring.activities.HomeActivity;
 import com.ludo.barel.clientmobandvocspring.activities.MainActivity;
 import com.ludo.barel.clientmobandvocspring.activities.SubscribeActivity;
 import com.ludo.barel.clientmobandvocspring.controls.CtrLogin;
@@ -45,8 +47,6 @@ public class ButtonListener implements View.OnClickListener {
                 }
                 break;
             case R.id.subscribe:
-
-
 
                Intent intent =  new Intent(v.getContext(),SubscribeActivity.class);
                v.getContext().startActivity(intent);
@@ -87,7 +87,15 @@ public class ButtonListener implements View.OnClickListener {
                 break;
 
             case R.id.contact:
-                Log.d("buttonListener ","contact tapped");
+
+                /*Intent intent2 =  new Intent(v.getContext(),AddContactActivity.class);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                v.getContext().startActivity(intent2);*/
+
+                Intent intent2 = new Intent(v.getContext(), AddContactActivity.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                v.getContext().startActivity(intent2);
                 break;
             case R.id.msg:
                 Log.d("buttonListener ","msg tapped");

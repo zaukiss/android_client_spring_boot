@@ -75,12 +75,16 @@ public class HomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class GetContacts extends AsyncTask<ListView,Void,Void>{
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        Log.d("result retunr ", "on on on ");
+    }
+
+    private class GetContacts extends AsyncTask<ListView,Void,Void>{
 
         @Override
         protected Void doInBackground(ListView... listViews) {
-
 
             try {
 
@@ -90,7 +94,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     ipServeur = p.getIpAddress();
                 }
-                String request ="http://"+p.getIpAddress()+"/contact?mail="+p.getPseudo();
+                String request ="http://"+ipServeur+"/contact?mail="+p.getPseudo();
                 String res = JsonManager.readJsonFromUrl(request);
                 JSONObject jsonObject  = new JSONObject(res);
                 if(jsonObject != null){
