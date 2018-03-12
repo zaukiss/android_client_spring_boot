@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ludo.barel.clientmobandvocspring.activities.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#4682B4">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:text="@string/title"
+            android:fontFamily="cursive"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="18pt"
+            android:gravity="center"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/accueil_txt"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="12pt"
+            android:gravity="center_horizontal"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="casual"
+                android:textColor="#000000"
+                android:text="@string/pseudo_txt"
+                android:textStyle="bold"
+                android:textSize="10pt" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hintPseu"
+                android:id="@+id/pseudo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="casual"
+                android:textColor="#000000"
+                android:text="@string/passW_txt"
+
+                android:textStyle="bold"
+                android:textSize="10pt" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:hint="@string/hintPass"
+                android:inputType="textPassword"
+                android:id="@+id/password"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="end">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/logBut_txt"
+                    android:textColor="#000000"
+                    android:fontFamily="casual"
+                    android:textStyle="bold"
+                    android:id="@+id/Login"
+                    style="?android:attr/buttonBarButtonStyle"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="casual"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:text="@string/subsBut_txt"
+                    android:id="@+id/subscribe"
+                    style="?android:attr/buttonBarButtonStyle"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

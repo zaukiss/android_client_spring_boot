@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">MobAndVoc</string>
+    <string name="title">Client Vocal Mobile</string>
+    <string name="accueil_txt">Bienvenue</string>
+    <string name="logBut_txt">Connexion</string>
+    <string name="subsBut_txt">S\'inscrire</string>
+    <string name="passW_txt">Password</string>
+    <string name="pseudo_txt">Email</string>
+    <string name="pseudoLabelSubscribe">Pseudo</string>
+    <string name="hintPass">Entrez votre mot de passe </string>
+    <string name="hintPseu">Entrez votre email</string>
+    <string name="action_settings">Settings</string>
+    <string name="ipAdd_txt">Address Serveur</string>
+    <string name="defaultIp">IP_ADDRESS:PORT</string>
+    <string name="pseudoParams">Pseudo</string>
+    <string name="pseudoHintParams">Entrez votre pseudo</string>
+    <string name="soundPathParams">Sonnerie Notification</string>
+    <string name="hintPathSound">Entrez le chemin d\'accès</string>
+    <string name="SaveParams">Enregistrer</string>
+    <string name="settingsLabel">Settings</string>
+    <string name="pseudohint">Entrer un pseudo</string>
+    <string name="mailLabelSubscribe">Address Mail</string>
+    <string name="mailLabelHint">Entrer votre mail</string>
+    <string name="passWordLabelSubscribe">Password</string>
+    <string name="passWordLabelSubscribeHint">Entrez un Password</string>
+    <string name="passWordConfirmLabelSubscribe">Confirmer password</string>
+    <string name="passWordConfirmLabelSubscribeHint">Confirmer votre password</string>
+    <string name="subscribeValidLabel">Valider</string>
+    <string name="homeLabel">Accueil</string>
+    <string name="icon">icon</string>
+    <string name="connectedContact">Contact connectés : </string>
+    <string name="action_quit">Quit</string>
+</resources>
